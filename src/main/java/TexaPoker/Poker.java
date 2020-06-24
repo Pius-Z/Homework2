@@ -9,12 +9,15 @@ public class Poker {
 
     public static void main(String[] args) {
 
-        Poker test = new Poker();
-        String str = "Black: 2H 3D 5S 9C KD White: 2C 3H 4S 8C AH";
-        test.getBlackNumAndProcess(test, str);
-        test.getWhiteNumAndProcess(test, str);
-        test.getBlackColors(test, str);
-        test.getWhiteColors(test, str);
+        Poker poker = new Poker();
+        Judge judge = new Judge();
+        String str = "Black: 2H 4S 4C 2D 4H White: 2S 8S AS QS 3S";
+        poker.getBlackNumAndProcess(poker, str);
+        poker.getWhiteNumAndProcess(poker, str);
+        poker.getBlackColors(poker, str);
+        poker.getWhiteColors(poker, str);
+        System.out.println(judge.judgeBType(poker, str));
+        System.out.println(judge.judgeWType(poker, str));
     }
 
     int[] Bnum = new int [5];
