@@ -4,249 +4,218 @@ import java.util.Arrays;
 
 public class Judge {
 
-    public int BIsRoyalStraightFlush(Poker poker, String str) {
-        if (poker.Bcol[0] == poker.Bcol[1] &&
-                poker.Bcol[0] == poker.Bcol[2] &&
-                poker.Bcol[0] == poker.Bcol[3] &&
-                poker.Bcol[0] == poker.Bcol[4] &&
-                poker.Bnum[1] - poker.Bnum[0] == 1 &&
-                poker.Bnum[2] - poker.Bnum[1] == 1 &&
-                poker.Bnum[3] - poker.Bnum[2] == 1 &&
-                poker.Bnum[4] - poker.Bnum[3] == 1 &&
-                poker.Bnum[4] == 14)
-            poker.Blevel = 10;
-        return poker.Blevel;
+    //皇家同花顺
+    public int isRoyalStraightFlush(Poker poker, String str) {
+        if (poker.col[0] == poker.col[1] && poker.col[0] == poker.col[2] &&
+                poker.col[0] == poker.col[3] && poker.col[0] == poker.col[4] &&
+                poker.num[1] - poker.num[0] == 1 && poker.num[2] - poker.num[1] == 1 &&
+                poker.num[3] - poker.num[2] == 1 && poker.num[4] - poker.num[3] == 1 &&
+                poker.num[4] == 14) {
+            poker.level = 10;
+            poker.comparePoint[4] = 0;
+            poker.comparePoint[3] = 0;
+            poker.comparePoint[2] = 0;
+            poker.comparePoint[1] = 0;
+            poker.comparePoint[0] = 0;
+        }
+        return poker.level;
     }
 
-    public int WIsRoyalStraightFlush(Poker poker, String str) {
-        if (poker.Wcol[0] == poker.Wcol[1] &&
-                poker.Wcol[0] == poker.Wcol[2] &&
-                poker.Wcol[0] == poker.Wcol[3] &&
-                poker.Wcol[0] == poker.Wcol[4] &&
-                poker.Wnum[1] - poker.Wnum[0] == 1 &&
-                poker.Wnum[2] - poker.Wnum[1] == 1 &&
-                poker.Wnum[3] - poker.Wnum[2] == 1 &&
-                poker.Wnum[4] - poker.Wnum[3] == 1 &&
-                poker.Wnum[4] == 14)
-            poker.Wlevel = 10;
-        return poker.Wlevel;
+    //同花顺
+    public int isStraightFlush(Poker poker, String str) {
+        if (poker.col[0] == poker.col[1] && poker.col[0] == poker.col[2] &&
+                poker.col[0] == poker.col[3] && poker.col[0] == poker.col[4] &&
+                poker.num[1] - poker.num[0] == 1 && poker.num[2] - poker.num[1] == 1 &&
+                poker.num[3] - poker.num[2] == 1 && poker.num[4] - poker.num[3] == 1) {
+            poker.level = 9;
+            poker.comparePoint[4] = poker.num[4];
+            poker.comparePoint[3] = 0;
+            poker.comparePoint[2] = 0;
+            poker.comparePoint[1] = 0;
+            poker.comparePoint[0] = 0;
+        }
+        return poker.level;
     }
 
-    public int BIsStraightFlush(Poker poker, String str) {
-        if (poker.Bcol[0] == poker.Bcol[1] &&
-                poker.Bcol[0] == poker.Bcol[2] &&
-                poker.Bcol[0] == poker.Bcol[3] &&
-                poker.Bcol[0] == poker.Bcol[4] &&
-                poker.Bnum[1] - poker.Bnum[0] == 1 &&
-                poker.Bnum[2] - poker.Bnum[1] == 1 &&
-                poker.Bnum[3] - poker.Bnum[2] == 1 &&
-                poker.Bnum[4] - poker.Bnum[3] == 1)
-            poker.Blevel = 9;
-        return poker.Blevel;
+    //四条,AAAAB,ABBBB
+    public int isFour(Poker poker, String str) {
+        if (poker.num[0] == poker.num[1] && poker.num[0] == poker.num[2] &&
+                poker.num[0] == poker.num[3]) {
+            poker.level = 8;
+            poker.comparePoint[4] = poker.num[3];
+            poker.comparePoint[3] = poker.num[4];
+            poker.comparePoint[2] = 0;
+            poker.comparePoint[1] = 0;
+            poker.comparePoint[0] = 0;
+        } else if (poker.num[1] == poker.num[2] && poker.num[1] == poker.num[3] &&
+                poker.num[1] == poker.num[4]) {
+            poker.level = 8;
+            poker.comparePoint[4] = poker.num[4];
+            poker.comparePoint[3] = poker.num[0];
+            poker.comparePoint[2] = 0;
+            poker.comparePoint[1] = 0;
+            poker.comparePoint[0] = 0;
+        }
+        return poker.level;
     }
 
-    public int WIsStraightFlush(Poker poker, String str) {
-        if (poker.Wcol[0] == poker.Wcol[1] &&
-                poker.Wcol[0] == poker.Wcol[2] &&
-                poker.Wcol[0] == poker.Wcol[3] &&
-                poker.Wcol[0] == poker.Wcol[4] &&
-                poker.Wnum[1] - poker.Wnum[0] == 1 &&
-                poker.Wnum[2] - poker.Wnum[1] == 1 &&
-                poker.Wnum[3] - poker.Wnum[2] == 1 &&
-                poker.Wnum[4] - poker.Wnum[3] == 1)
-            poker.Wlevel = 9;
-        return poker.Wlevel;
+    //葫芦,AAABB,AABBB
+    public int isGourd(Poker poker, String str) {
+        if (poker.num[0] == poker.num[1] && poker.num[0] == poker.num[2] &&
+                poker.num[3] == poker.num[4] ) {
+            poker.level = 7;
+            poker.comparePoint[4] = poker.num[2];
+            poker.comparePoint[3] = poker.num[4];
+            poker.comparePoint[2] = 0;
+            poker.comparePoint[1] = 0;
+            poker.comparePoint[0] = 0;
+        } else if (poker.num[0] == poker.num[1] && poker.num[2] == poker.num[3] &&
+                poker.num[3] == poker.num[4]) {
+            poker.level = 7;
+            poker.comparePoint[4] = poker.num[4];
+            poker.comparePoint[3] = poker.num[1];
+            poker.comparePoint[2] = 0;
+            poker.comparePoint[1] = 0;
+            poker.comparePoint[0] = 0;
+        }
+        return poker.level;
     }
 
-    public int BIsFour(Poker poker, String str) {
-        if ((poker.Bnum[0] == poker.Bnum[1] &&
-                poker.Bnum[0] == poker.Bnum[2] &&
-                poker.Bnum[0] == poker.Bnum[3] )||(
-                poker.Bnum[1] == poker.Bnum[2] &&
-                poker.Bnum[1] == poker.Bnum[3] &&
-                poker.Bnum[1] == poker.Bnum[4]))
-            poker.Blevel = 8;
-        return poker.Blevel;
+    //同花
+    public int isFlush(Poker poker, String str) {
+        if (poker.col[0] == poker.col[1] && poker.col[0] == poker.col[2] &&
+                poker.col[0] == poker.col[3] && poker.col[0] == poker.col[4]) {
+            poker.level = 6;
+            poker.comparePoint = Arrays.copyOf(poker.num, 5);
+        }
+        return poker.level;
     }
 
-    public int WIsFour(Poker poker, String str) {
-        if ((poker.Wnum[0] == poker.Wnum[1] &&
-                poker.Wnum[0] == poker.Wnum[2] &&
-                poker.Wnum[0] == poker.Wnum[3] )||(
-                poker.Wnum[1] == poker.Wnum[2] &&
-                poker.Wnum[1] == poker.Wnum[3] &&
-                poker.Wnum[1] == poker.Wnum[4]))
-            poker.Wlevel = 8;
-        return poker.Wlevel;
+    //顺子
+    public int isStraight(Poker poker, String str) {
+        if ( poker.num[1] - poker.num[0] == 1 && poker.num[2] - poker.num[1] == 1 &&
+                poker.num[3] - poker.num[2] == 1 && poker.num[4] - poker.num[3] == 1) {
+            poker.level = 5;
+            poker.comparePoint[4] = poker.num[4];
+            poker.comparePoint[3] = 0;
+            poker.comparePoint[2] = 0;
+            poker.comparePoint[1] = 0;
+            poker.comparePoint[0] = 0;
+        }
+        return poker.level;
     }
 
-    public int BIsGourd(Poker poker, String str) {
-        if (((poker.Bnum[0] == poker.Bnum[1] &&
-                poker.Bnum[0] == poker.Bnum[2] )&&(
-                poker.Bnum[3] == poker.Bnum[4] ))||((
-                poker.Bnum[0] == poker.Bnum[1] )&&(
-                poker.Bnum[2] == poker.Bnum[3] &&
-                poker.Bnum[3] == poker.Bnum[4])))
-            poker.Blevel = 7;
-        return poker.Blevel;
+    //三条,AAABC,ABBBC,ABCCC
+    public int isThree(Poker poker, String str) {
+        if (poker.num[0] == poker.num[1] && poker.num[0] == poker.num[2]) {
+            poker.level = 4;
+            poker.comparePoint[4] = poker.num[2];
+            poker.comparePoint[3] = poker.num[4];
+            poker.comparePoint[2] = poker.num[3];
+            poker.comparePoint[1] = 0;
+            poker.comparePoint[0] = 0;
+        } else if (poker.num[1] == poker.num[2] && poker.num[1] == poker.num[3]) {
+            poker.level = 4;
+            poker.comparePoint[4] = poker.num[3];
+            poker.comparePoint[3] = poker.num[4];
+            poker.comparePoint[2] = poker.num[0];
+            poker.comparePoint[1] = 0;
+            poker.comparePoint[0] = 0;
+        } else if (poker.num[2] == poker.num[3] && poker.num[2] == poker.num[4]) {
+            poker.level = 4;
+            poker.comparePoint[4] = poker.num[4];
+            poker.comparePoint[3] = poker.num[1];
+            poker.comparePoint[2] = poker.num[0];
+            poker.comparePoint[1] = 0;
+            poker.comparePoint[0] = 0;
+        }
+        return poker.level;
     }
 
-    public int WIsGourd(Poker poker, String str) {
-        if (((poker.Wnum[0] == poker.Wnum[1] &&
-                poker.Wnum[0] == poker.Wnum[2] )&&(
-                poker.Wnum[3] == poker.Wnum[4] ))||((
-                poker.Wnum[0] == poker.Wnum[1] )&&(
-                poker.Wnum[2] == poker.Wnum[3] &&
-                poker.Wnum[3] == poker.Wnum[4])))
-            poker.Wlevel = 7;
-        return poker.Wlevel;
+    //两对,AABBC,AABCC,ABBCC
+    public int isTwoPairs(Poker poker, String str) {
+        if (poker.num[0] == poker.num[1] && poker.num[2] == poker.num[3]) {
+            poker.level = 3;
+            poker.comparePoint[4] = poker.num[3];
+            poker.comparePoint[3] = poker.num[1];
+            poker.comparePoint[2] = poker.num[4];
+            poker.comparePoint[1] = 0;
+            poker.comparePoint[0] = 0;
+        } else if (poker.num[0] == poker.num[1] && poker.num[3] == poker.num[4]) {
+            poker.level = 3;
+            poker.comparePoint[4] = poker.num[4];
+            poker.comparePoint[3] = poker.num[1];
+            poker.comparePoint[2] = poker.num[2];
+            poker.comparePoint[1] = 0;
+            poker.comparePoint[0] = 0;
+        } else if (poker.num[1] == poker.num[2] && poker.num[3] == poker.num[4]) {
+            poker.level = 3;
+            poker.comparePoint[4] = poker.num[4];
+            poker.comparePoint[3] = poker.num[2];
+            poker.comparePoint[2] = poker.num[0];
+            poker.comparePoint[1] = 0;
+            poker.comparePoint[0] = 0;
+        }
+        return poker.level;
     }
 
-    public int BIsFlush(Poker poker, String str) {
-        if (poker.Bcol[0] == poker.Bcol[1] &&
-                poker.Bcol[0] == poker.Bcol[2] &&
-                poker.Bcol[0] == poker.Bcol[3] &&
-                poker.Bcol[0] == poker.Bcol[4])
-            poker.Blevel = 6;
-        return poker.Blevel;
+    //一对,AABCD,ABBCD,ABCCD,ABCDD
+    public int isOnePairs(Poker poker, String str) {
+        if (poker.num[0] == poker.num[1]) {
+            poker.level = 2;
+            poker.comparePoint[4] = poker.num[1];
+            poker.comparePoint[3] = poker.num[4];
+            poker.comparePoint[2] = poker.num[3];
+            poker.comparePoint[1] = poker.num[2];
+            poker.comparePoint[0] = 0;
+        } else if (poker.num[1] == poker.num[2]) {
+            poker.level = 2;
+            poker.comparePoint[4] = poker.num[2];
+            poker.comparePoint[3] = poker.num[4];
+            poker.comparePoint[2] = poker.num[3];
+            poker.comparePoint[1] = poker.num[0];
+            poker.comparePoint[0] = 0;
+        } else if (poker.num[2] == poker.num[3]) {
+            poker.level = 2;
+            poker.comparePoint[4] = poker.num[3];
+            poker.comparePoint[3] = poker.num[4];
+            poker.comparePoint[2] = poker.num[1];
+            poker.comparePoint[1] = poker.num[0];
+            poker.comparePoint[0] = 0;
+        } else if (poker.num[3] == poker.num[4]) {
+            poker.level = 2;
+            poker.comparePoint[4] = poker.num[4];
+            poker.comparePoint[3] = poker.num[2];
+            poker.comparePoint[2] = poker.num[1];
+            poker.comparePoint[1] = poker.num[0];
+            poker.comparePoint[0] = 0;
+        }
+        return poker.level;
     }
 
-    public int WIsFlush(Poker poker, String str) {
-        if (poker.Wcol[0] == poker.Wcol[1] &&
-                poker.Wcol[0] == poker.Wcol[2] &&
-                poker.Wcol[0] == poker.Wcol[3] &&
-                poker.Wcol[0] == poker.Wcol[4])
-            poker.Wlevel = 6;
-        return poker.Wlevel;
+    //高牌,即散牌
+    public int isHighCard(Poker poker, String str) {
+        if (poker.num[0] != poker.num[1] && poker.num[1] != poker.num[2] &&
+                poker.num[2] != poker.num[3] && poker.num[3] != poker.num[4]){
+            poker.level = 1;
+            poker.comparePoint = Arrays.copyOf(poker.num, 5);
+        }
+        return poker.level;
     }
 
-    public int BIsStraight(Poker poker, String str) {
-        if ( poker.Bnum[1] - poker.Bnum[0] == 1 &&
-                poker.Bnum[2] - poker.Bnum[1] == 1 &&
-                poker.Bnum[3] - poker.Bnum[2] == 1 &&
-                poker.Bnum[4] - poker.Bnum[3] == 1)
-            poker.Blevel = 5;
-        return poker.Blevel;
-    }
-
-    public int WIsStraight(Poker poker, String str) {
-        if (poker.Wnum[1] - poker.Wnum[0] == 1 &&
-                poker.Wnum[2] - poker.Wnum[1] == 1 &&
-                poker.Wnum[3] - poker.Wnum[2] == 1 &&
-                poker.Wnum[4] - poker.Wnum[3] == 1)
-            poker.Wlevel = 5;
-        return poker.Wlevel;
-    }
-
-    public int BIsThree(Poker poker, String str) {
-        if ((poker.Bnum[0] == poker.Bnum[1] &&
-                poker.Bnum[0] == poker.Bnum[2] )||(
-                poker.Bnum[1] == poker.Bnum[2] &&
-                poker.Bnum[1] == poker.Bnum[3] )||(
-                poker.Bnum[2] == poker.Bnum[3] &&
-                poker.Bnum[2] == poker.Bnum[4]))
-            poker.Blevel = 4;
-        return poker.Blevel;
-    }
-
-    public int WIsThree(Poker poker, String str) {
-        if ((poker.Wnum[0] == poker.Wnum[1] &&
-                poker.Wnum[0] == poker.Wnum[2] )||(
-                poker.Wnum[1] == poker.Wnum[2] &&
-                poker.Wnum[1] == poker.Wnum[3] )||(
-                poker.Wnum[2] == poker.Wnum[3] &&
-                poker.Wnum[2] == poker.Wnum[4]))
-            poker.Wlevel = 4;
-        return poker.Wlevel;
-    }
-
-    //AABBC,AABCC,ABBCC
-    public int BIsTwoPairs(Poker poker, String str) {
-        if ((poker.Bnum[0] == poker.Bnum[1] &&
-                poker.Bnum[2] == poker.Bnum[3] )||(
-                poker.Bnum[0] == poker.Bnum[1] &&
-                poker.Bnum[3] == poker.Bnum[4] )||(
-                poker.Bnum[1] == poker.Bnum[2] &&
-                poker.Bnum[3] == poker.Bnum[4]))
-            poker.Blevel = 3;
-        return poker.Blevel;
-    }
-
-    public int WIsTwoPairs(Poker poker, String str) {
-        if ((poker.Wnum[0] == poker.Wnum[1] &&
-                poker.Wnum[2] == poker.Wnum[3] )||(
-                poker.Wnum[0] == poker.Wnum[1] &&
-                poker.Wnum[3] == poker.Wnum[4] )||(
-                poker.Wnum[1] == poker.Wnum[2] &&
-                poker.Wnum[3] == poker.Wnum[4]))
-            poker.Wlevel = 3;
-        return poker.Wlevel;
-    }
-
-    //AABCD,ABBCD,ABCCD,ABCDD
-    public int BIsOnePairs(Poker poker, String str) {
-        if (poker.Bnum[0] == poker.Bnum[1] ||
-                poker.Bnum[1] == poker.Bnum[2] ||
-                poker.Bnum[2] == poker.Bnum[3] ||
-                poker.Bnum[3] == poker.Bnum[4])
-            poker.Blevel = 2;
-        return poker.Blevel;
-    }
-
-    public int WIsOnePairs(Poker poker, String str) {
-        if (poker.Wnum[0] == poker.Wnum[1] ||
-                poker.Wnum[1] == poker.Wnum[2] ||
-                poker.Wnum[2] == poker.Wnum[3] ||
-                poker.Wnum[3] == poker.Wnum[4])
-            poker.Wlevel = 2;
-        return poker.Wlevel;
-    }
-
-    public int BIsHighCard(Poker poker, String str) {
-        if (poker.Bnum[0] != poker.Bnum[1] &&
-                poker.Bnum[1] != poker.Bnum[2] &&
-                poker.Bnum[2] != poker.Bnum[3] &&
-                poker.Bnum[3] != poker.Bnum[4])
-            poker.Blevel = 1;
-        return poker.Blevel;
-    }
-
-    public int WIsHighCard(Poker poker, String str) {
-        if (poker.Wnum[0] != poker.Wnum[1] &&
-                poker.Wnum[1] != poker.Wnum[2] &&
-                poker.Wnum[2] != poker.Wnum[3] &&
-                poker.Wnum[3] != poker.Wnum[4])
-            poker.Wlevel = 1;
-        return poker.Wlevel;
-    }
-
-    public int judgeBType(Poker poker, String str) {
+    public int judgeType(Poker poker, String str) {
         Judge judge = new Judge();
-        judge.BIsHighCard(poker, str);
-        judge.BIsOnePairs(poker, str);
-        judge.BIsTwoPairs(poker, str);
-        judge.BIsThree(poker, str);
-        judge.BIsStraight(poker, str);
-        judge.BIsFlush(poker, str);
-        judge.BIsGourd(poker, str);
-        judge.BIsFour(poker, str);
-        judge.BIsStraightFlush(poker, str);
-        judge.BIsRoyalStraightFlush(poker, str);
-        return poker.Blevel;
+        judge.isHighCard(poker, str);
+        judge.isOnePairs(poker, str);
+        judge.isTwoPairs(poker, str);
+        judge.isThree(poker, str);
+        judge.isStraight(poker, str);
+        judge.isFlush(poker, str);
+        judge.isGourd(poker, str);
+        judge.isFour(poker, str);
+        judge.isStraightFlush(poker, str);
+        judge.isRoyalStraightFlush(poker, str);
+        return poker.level;
     }
 
-    public int judgeWType(Poker poker, String str) {
-        Judge judge = new Judge();
-        judge.WIsHighCard(poker, str);
-        judge.WIsOnePairs(poker, str);
-        judge.WIsTwoPairs(poker, str);
-        judge.WIsThree(poker, str);
-        judge.WIsStraight(poker, str);
-        judge.WIsFlush(poker, str);
-        judge.WIsGourd(poker, str);
-        judge.WIsFour(poker, str);
-        judge.WIsStraightFlush(poker, str);
-        judge.WIsRoyalStraightFlush(poker, str);
-        return poker.Wlevel;
-    }
 }

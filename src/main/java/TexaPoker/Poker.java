@@ -9,88 +9,87 @@ public class Poker {
 
     public static void main(String[] args) {
 
-        Poker poker = new Poker();
+        Poker black = new Poker();
+        Poker white = new Poker();
         Judge judge = new Judge();
-        String str = "Black: 2H 4S 4C 2D 4H White: 2S 8S AS QS 3S";
-        poker.getBlackNumAndProcess(poker, str);
-        poker.getWhiteNumAndProcess(poker, str);
-        poker.getBlackColors(poker, str);
-        poker.getWhiteColors(poker, str);
-        System.out.println(judge.judgeBType(poker, str));
-        System.out.println(judge.judgeWType(poker, str));
+        String str = "Black: 2D 2H 4S 7C 6S White: 2S 4D 6S 8H TS";
+        black.getBlackNumAndProcess(black, str);
+        white.getWhiteNumAndProcess(white, str);
+        black.getBlackColors(black, str);
+        white.getWhiteColors(white, str);
+        System.out.println(judge.judgeType(black, str));
+        System.out.println(judge.judgeType(white, str));
+        System.out.println(Arrays.toString(black.comparePoint));
+        System.out.println(Arrays.toString(white.comparePoint));
     }
 
-    int[] Bnum = new int [5];
-    int[] Wnum = new int [5];
-    char[] Bcol = new char [5];
-    char[] Wcol = new char [5];
-    int Blevel = 0;
-    int Wlevel = 0;
-    int[] BComparePoint = new int [5];
-    int[] WComparePoint = new int [5];
+    int[] num = new int [5];
+    char[] col = new char [5];
+    int level = 0;
+    int[] comparePoint = {0, 0, 0, 0, 0};
 
 
-    public int[] getBlackNumAndProcess(Poker poker, String str) {
+    public int[] getBlackNumAndProcess(Poker black, String str) {
         char[] in;
         in = str.toCharArray();
         for (int i=0; i<5; i++) {
             if (in[7 + 3 * i] == 84)//T
-                poker.Bnum[i] = 10;
+                black.num[i] = 10;
             else if (in[7 + 3 * i] == 74)//J
-                poker.Bnum[i] = 11;
+                black.num[i] = 11;
             else if (in[7 + 3 * i] == 81)//Q
-                poker.Bnum[i] = 12;
+                black.num[i] = 12;
             else if (in[7 + 3 * i] == 75)//K
-                poker.Bnum[i] = 13;
+                black.num[i] = 13;
             else if (in[7 + 3 * i] == 65)//A
-                poker.Bnum[i] = 14;
+                black.num[i] = 14;
             else
-                poker.Bnum[i] = in[7 + 3 * i] - 48;
+                black.num[i] = in[7 + 3 * i] - 48;
         }
-        Arrays.sort(poker.Bnum);
-        System.out.println(Arrays.toString(poker.Bnum));
-        return poker.Bnum;
+        Arrays.sort(black.num);
+        System.out.println(Arrays.toString(black.num));
+        return black.num;
     }
 
-    public int[] getWhiteNumAndProcess(Poker poker, String str) {
+    public int[] getWhiteNumAndProcess(Poker white, String str) {
         char[] in;
         in = str.toCharArray();
         for (int i=0; i<5; i++) {
             if (in[29 + 3 * i] == 84)//T
-                poker.Wnum[i] = 10;
+                white.num[i] = 10;
             else if (in[29 + 3 * i] == 74)//J
-                poker.Wnum[i] = 11;
+                white.num[i] = 11;
             else if (in[29 + 3 * i] == 81)//Q
-                poker.Wnum[i] = 12;
+                white.num[i] = 12;
             else if (in[29 + 3 * i] == 75)//K
-                poker.Wnum[i] = 13;
+                white.num[i] = 13;
             else if (in[29 + 3 * i] == 65)//A
-                poker.Wnum[i] = 14;
+                white.num[i] = 14;
             else
-                poker.Wnum[i] = in[29 + 3 * i] - 48;
+                white.num[i] = in[29 + 3 * i] - 48;
         }
-        Arrays.sort(poker.Wnum);
-        System.out.println(Arrays.toString(poker.Wnum));
-        return poker.Wnum;
+        Arrays.sort(white.num);
+        System.out.println(Arrays.toString(white.num));
+        return white.num;
     }
 
-    public char[] getBlackColors(Poker poker, String str) {
+    public char[] getBlackColors(Poker black, String str) {
         char[] in;
         in = str.toCharArray();
         for (int i=0; i<5; i++) {
-            poker.Bcol[i] = in[8 + 3 * i];
+            black.col[i] = in[8 + 3 * i];
         }
-        System.out.println(poker.Bcol);
-        return poker.Bcol;
+        System.out.println(black.col);
+        return black.col;
     }
 
-    public char[] getWhiteColors(Poker poker, String str) {
+    public char[] getWhiteColors(Poker white, String str) {
         char[] in;
         in = str.toCharArray();
         for (int i=0; i<5; i++) {
-            poker.Wcol[i] = in[30 + 3 * i];
+            white.col[i] = in[30 + 3 * i];
         }
-        System.out.println(poker.Wcol);
-        return poker.Wcol;
+        System.out.println(white.col);
+        return white.col;
     }
 }

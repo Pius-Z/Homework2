@@ -6,249 +6,257 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class JudgeTest {
 
-    static String str = "Black: TH JH QH KH AH White: TH JH QH KH AH";
+
+    static String str = "Black: TC JC QC KC AC White: 2S 3S 6S 4S 5S";
+    /*
+    测试用例
+    10-9 Black: TC JC QC AC KC White: 2S 3S 6S 4S 5S
+    7-8 Black: 6C 8C 6D 8C 6H White: 2D 2H 2S 2C 5S
+    6-5 Black: 2S 4S 6S 9S 5S White: 2D 3H 4S 5C 6S
+    3-4 Black: 2D 2H 4S 6C 6S White: 2S 2D 2S 9H 5S
+    2-1 Black: 2D 2H 4S 7C 6S White: 2S 4D 6S 8H TS
+     */
 
     /*
     @Test
-    void testBIsRoyalStraightFlush() {
-        Poker poker = new Poker();
+    void testBlackIsRoyalStraightFlush() {
+        Poker black = new Poker();
         Judge judge = new Judge();
-        poker.getBlackNumAndProcess(poker, str);
-        poker.getBlackColors(poker, str);
+        black.getBlackNumAndProcess(black, str);
+        black.getBlackColors(black, str);
         int expect = 10;
-        int actual = judge.BIsRoyalStraightFlush(poker, str);
+        int actual = judge.isRoyalStraightFlush(black, str);
         assertEquals(expect, actual);
     }
 
     @Test
-    void testWIsRoyalStraightFlush() {
-        Poker poker = new Poker();
+    void testWhiteIsRoyalStraightFlush() {
+        Poker white = new Poker();
         Judge judge = new Judge();
-        poker.getWhiteNumAndProcess(poker, str);
-        poker.getWhiteColors(poker, str);
+        white.getWhiteNumAndProcess(white, str);
+        white.getWhiteColors(white, str);
         int expect = 10;
-        int actual = judge.WIsRoyalStraightFlush(poker, str);
+        int actual = judge.isRoyalStraightFlush(white, str);
         assertEquals(expect, actual);
     }
 
     @Test
-    void testBIsStraightFlush() {
-        Poker poker = new Poker();
+    void testBlackIsStraightFlush() {
+        Poker black = new Poker();
         Judge judge = new Judge();
-        poker.getBlackNumAndProcess(poker, str);
-        poker.getBlackColors(poker, str);
+        black.getBlackNumAndProcess(black, str);
+        black.getBlackColors(black, str);
         int expect = 9;
-        int actual = judge.BIsStraightFlush(poker, str);
+        int actual = judge.isStraightFlush(black, str);
         assertEquals(expect, actual);
     }
 
     @Test
-    void testWIsStraightFlush() {
-        Poker poker = new Poker();
+    void testWhiteIsStraightFlush() {
+        Poker white = new Poker();
         Judge judge = new Judge();
-        poker.getWhiteNumAndProcess(poker, str);
-        poker.getWhiteColors(poker, str);
+        white.getWhiteNumAndProcess(white, str);
+        white.getWhiteColors(white, str);
         int expect = 9;
-        int actual = judge.WIsStraightFlush(poker, str);
+        int actual = judge.isStraightFlush(white, str);
         assertEquals(expect, actual);
     }
 
     @Test
-    void testBIsFour() {
-        Poker poker = new Poker();
+    void testBlackIsFour() {
+        Poker black = new Poker();
         Judge judge = new Judge();
-        poker.getBlackNumAndProcess(poker, str);
-        poker.getBlackColors(poker, str);
+        black.getBlackNumAndProcess(black, str);
+        black.getBlackColors(black, str);
         int expect = 8;
-        int actual = judge.BIsFour(poker, str);
+        int actual = judge.isFour(black, str);
         assertEquals(expect, actual);
     }
 
     @Test
-    void testWIsFour() {
-        Poker poker = new Poker();
+    void testWhiteIsFour() {
+        Poker white = new Poker();
         Judge judge = new Judge();
-        poker.getWhiteNumAndProcess(poker, str);
-        poker.getWhiteColors(poker, str);
+        white.getWhiteNumAndProcess(white, str);
+        white.getWhiteColors(white, str);
         int expect = 8;
-        int actual = judge.WIsFour(poker, str);
+        int actual = judge.isFour(white, str);
         assertEquals(expect, actual);
     }
 
     @Test
-    void testBIsGourd() {
-        Poker poker = new Poker();
+    void testBlackIsGourd() {
+        Poker black = new Poker();
         Judge judge = new Judge();
-        poker.getBlackNumAndProcess(poker, str);
-        poker.getBlackColors(poker, str);
+        black.getBlackNumAndProcess(black, str);
+        black.getBlackColors(black, str);
         int expect = 7;
-        int actual = judge.BIsGourd(poker, str);
+        int actual = judge.isGourd(black, str);
         assertEquals(expect, actual);
     }
 
     @Test
-    void testWIsGourd() {
-        Poker poker = new Poker();
+    void testWhiteIsGourd() {
+        Poker white = new Poker();
         Judge judge = new Judge();
-        poker.getWhiteNumAndProcess(poker, str);
-        poker.getWhiteColors(poker, str);
+        white.getWhiteNumAndProcess(white, str);
+        white.getWhiteColors(white, str);
         int expect = 7;
-        int actual = judge.WIsGourd(poker, str);
+        int actual = judge.isGourd(white, str);
         assertEquals(expect, actual);
     }
 
     @Test
-    void testBIsFlush() {
-        Poker poker = new Poker();
+    void testBlackIsFlush() {
+        Poker black = new Poker();
         Judge judge = new Judge();
-        poker.getBlackNumAndProcess(poker, str);
-        poker.getBlackColors(poker, str);
+        black.getBlackNumAndProcess(black, str);
+        black.getBlackColors(black, str);
         int expect = 6;
-        int actual = judge.BIsFlush(poker, str);
+        int actual = judge.isFlush(black, str);
         assertEquals(expect, actual);
     }
 
     @Test
-    void testWIsFlush() {
-        Poker poker = new Poker();
+    void testWhiteIsFlush() {
+        Poker white = new Poker();
         Judge judge = new Judge();
-        poker.getWhiteNumAndProcess(poker, str);
-        poker.getWhiteColors(poker, str);
+        white.getWhiteNumAndProcess(white, str);
+        white.getWhiteColors(white, str);
         int expect = 6;
-        int actual = judge.WIsFlush(poker, str);
+        int actual = judge.isFlush(white, str);
         assertEquals(expect, actual);
     }
 
     @Test
-    void testBIsStraight() {
-        Poker poker = new Poker();
+    void testBlackIsStraight() {
+        Poker white = new Poker();
         Judge judge = new Judge();
-        poker.getBlackNumAndProcess(poker, str);
-        poker.getBlackColors(poker, str);
+        white.getBlackNumAndProcess(white, str);
+        white.getBlackColors(white, str);
         int expect = 5;
-        int actual = judge.BIsStraight(poker, str);
+        int actual = judge.isStraight(white, str);
         assertEquals(expect, actual);
     }
 
     @Test
-    void testWIsStraight() {
-        Poker poker = new Poker();
+    void testWhiteIsStraight() {
+        Poker white = new Poker();
         Judge judge = new Judge();
-        poker.getWhiteNumAndProcess(poker, str);
-        poker.getWhiteColors(poker, str);
+        white.getWhiteNumAndProcess(white, str);
+        white.getWhiteColors(white, str);
         int expect = 5;
-        int actual = judge.WIsStraight(poker, str);
+        int actual = judge.isStraight(white, str);
         assertEquals(expect, actual);
     }
 
     @Test
-    void testBIsThree() {
-        Poker poker = new Poker();
+    void testBlackIsThree() {
+        Poker black = new Poker();
         Judge judge = new Judge();
-        poker.getBlackNumAndProcess(poker, str);
-        poker.getBlackColors(poker, str);
+        black.getBlackNumAndProcess(black, str);
+        black.getBlackColors(black, str);
         int expect = 4;
-        int actual = judge.BIsThree(poker, str);
+        int actual = judge.isThree(black, str);
         assertEquals(expect, actual);
     }
 
     @Test
-    void testWIsThree() {
-        Poker poker = new Poker();
+    void testWhiteIsThree() {
+        Poker white = new Poker();
         Judge judge = new Judge();
-        poker.getWhiteNumAndProcess(poker, str);
-        poker.getWhiteColors(poker, str);
+        white.getWhiteNumAndProcess(white, str);
+        white.getWhiteColors(white, str);
         int expect = 4;
-        int actual = judge.WIsThree(poker, str);
+        int actual = judge.isThree(white, str);
         assertEquals(expect, actual);
     }
 
     @Test
-    void testBIsTwoPairs() {
-        Poker poker = new Poker();
+    void testBlackIsTwoPairs() {
+        Poker black = new Poker();
         Judge judge = new Judge();
-        poker.getBlackNumAndProcess(poker, str);
-        poker.getBlackColors(poker, str);
+        black.getBlackNumAndProcess(black, str);
+        black.getBlackColors(black, str);
         int expect = 3;
-        int actual = judge.BIsTwoPairs(poker, str);
+        int actual = judge.isTwoPairs(black, str);
         assertEquals(expect, actual);
     }
 
     @Test
-    void testWIsTwoPairs() {
-        Poker poker = new Poker();
+    void testWhiteIsTwoPairs() {
+        Poker white = new Poker();
         Judge judge = new Judge();
-        poker.getWhiteNumAndProcess(poker, str);
-        poker.getWhiteColors(poker, str);
+        white.getWhiteNumAndProcess(white, str);
+        white.getWhiteColors(white, str);
         int expect = 3;
-        int actual = judge.WIsTwoPairs(poker, str);
+        int actual = judge.isTwoPairs(white, str);
         assertEquals(expect, actual);
     }
 
     @Test
-    void testBIsOnePairs() {
-        Poker poker = new Poker();
+    void testBlackIsOnePairs() {
+        Poker black = new Poker();
         Judge judge = new Judge();
-        poker.getBlackNumAndProcess(poker, str);
-        poker.getBlackColors(poker, str);
+        black.getBlackNumAndProcess(black, str);
+        black.getBlackColors(black, str);
         int expect = 2;
-        int actual = judge.BIsOnePairs(poker, str);
+        int actual = judge.isOnePairs(black, str);
         assertEquals(expect, actual);
     }
 
     @Test
-    void testWIsOnePairs() {
-        Poker poker = new Poker();
+    void testWhiteIsOnePairs() {
+        Poker white = new Poker();
         Judge judge = new Judge();
-        poker.getWhiteNumAndProcess(poker, str);
-        poker.getWhiteColors(poker, str);
+        white.getWhiteNumAndProcess(white, str);
+        white.getWhiteColors(white, str);
         int expect = 2;
-        int actual = judge.WIsOnePairs(poker, str);
+        int actual = judge.isOnePairs(white, str);
         assertEquals(expect, actual);
     }
 
     @Test
-    void testBIsHighCard() {
-        Poker poker = new Poker();
+    void testBlackIsHighCard() {
+        Poker black = new Poker();
         Judge judge = new Judge();
-        poker.getBlackNumAndProcess(poker, str);
-        poker.getBlackColors(poker, str);
+        black.getBlackNumAndProcess(black, str);
+        black.getBlackColors(black, str);
         int expect = 1;
-        int actual = judge.BIsHighCard(poker, str);
+        int actual = judge.isHighCard(black, str);
         assertEquals(expect, actual);
     }
 
     @Test
-    void testWIsHighCard() {
-        Poker poker = new Poker();
+    void testWhiteIsHighCard() {
+        Poker white = new Poker();
         Judge judge = new Judge();
-        poker.getWhiteNumAndProcess(poker, str);
-        poker.getWhiteColors(poker, str);
+        white.getWhiteNumAndProcess(white, str);
+        white.getWhiteColors(white, str);
         int expect = 1;
-        int actual = judge.WIsHighCard(poker, str);
+        int actual = judge.isHighCard(white, str);
         assertEquals(expect, actual);
     }
-
      */
     @Test
-    void testJudgeBType() {
-        Poker poker = new Poker();
+    void testJudgeBlackType() {
+        Poker black = new Poker();
         Judge judge = new Judge();
-        poker.getBlackNumAndProcess(poker, str);
-        poker.getBlackColors(poker, str);
+        black.getBlackNumAndProcess(black, str);
+        black.getBlackColors(black, str);
         int expect = 10;
-        int actual = judge.judgeBType(poker, str);
+        int actual = judge.judgeType(black, str);
         assertEquals(expect, actual);
     }
 
     @Test
-    void testJudgeWType() {
-        Poker poker = new Poker();
+    void testJudgeWhiteType() {
+        Poker white = new Poker();
         Judge judge = new Judge();
-        poker.getWhiteNumAndProcess(poker, str);
-        poker.getWhiteColors(poker, str);
-        int expect = 10;
-        int actual = judge.judgeWType(poker, str);
+        white.getWhiteNumAndProcess(white, str);
+        white.getWhiteColors(white, str);
+        int expect = 9;
+        int actual = judge.judgeType(white, str);
         assertEquals(expect, actual);
     }
 }
