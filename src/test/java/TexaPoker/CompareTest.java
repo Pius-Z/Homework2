@@ -26,8 +26,6 @@ class CompareTest {
     Black: 7C 1C 3C TC 8C White: 2S TS 9S 4S 5S 输出: White wins 牌型(6-6)
     Black: 7H 7C 3D TC 7S White: 8S 5C 8H 4S 8D 输出: White wins 牌型(4-4)
     Black: 2D 2H 4S 6C 6S White: 6S 4C 2H 6S 2D 输出: Tie 牌型(3-3)
-    Black wins
-    White wins
      */
     @Test
     void testCompareCardSize() {
@@ -35,6 +33,7 @@ class CompareTest {
         Poker white = new Poker();
         Judge judge = new Judge();
         Compare compare = new Compare();
+
         black.getBlackNumAndProcess(black, str);
         white.getWhiteNumAndProcess(white, str);
         black.getBlackColors(black, str);

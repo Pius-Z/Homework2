@@ -7,29 +7,10 @@ import java.util.Arrays;
 
 public class Poker {
 
-    public static void main(String[] args) {
-
-        Poker black = new Poker();
-        Poker white = new Poker();
-        Judge judge = new Judge();
-        Compare compare = new Compare();
-        String str = "Black: 2D 2H 4S 6C 6S White: 6S 4C 2H 6S 2D";
-        black.getBlackNumAndProcess(black, str);
-        white.getWhiteNumAndProcess(white, str);
-        black.getBlackColors(black, str);
-        white.getWhiteColors(white, str);
-        System.out.println(judge.judgeType(black, str));
-        System.out.println(judge.judgeType(white, str));
-        System.out.println(Arrays.toString(black.comparePoint));
-        System.out.println(Arrays.toString(white.comparePoint));
-        System.out.println(compare.isCompareCardSize(black, white));
-    }
-
     int[] num = new int [5];
     char[] col = new char [5];
     int level = 0;
     int[] comparePoint = {0, 0, 0, 0, 0};
-
 
     public int[] getBlackNumAndProcess(Poker black, String str) {
         char[] in;
@@ -49,7 +30,6 @@ public class Poker {
                 black.num[i] = in[7 + 3 * i] - 48;
         }
         Arrays.sort(black.num);
-        System.out.println(Arrays.toString(black.num));
         return black.num;
     }
 
@@ -71,7 +51,6 @@ public class Poker {
                 white.num[i] = in[29 + 3 * i] - 48;
         }
         Arrays.sort(white.num);
-        System.out.println(Arrays.toString(white.num));
         return white.num;
     }
 
@@ -81,7 +60,6 @@ public class Poker {
         for (int i=0; i<5; i++) {
             black.col[i] = in[8 + 3 * i];
         }
-        System.out.println(black.col);
         return black.col;
     }
 
@@ -91,7 +69,6 @@ public class Poker {
         for (int i=0; i<5; i++) {
             white.col[i] = in[30 + 3 * i];
         }
-        System.out.println(white.col);
         return white.col;
     }
 }
