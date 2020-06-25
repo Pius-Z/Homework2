@@ -3,7 +3,7 @@ package TexaPoker;
 public class Compare {
 
     public String isCompareCardSize(Poker black, Poker white) {
-        int flag = 0;
+        int flag = 0;                       //结果标志,0=平局,1=黑色赢,2=白色赢
         if (black.level > white.level)
             flag = 1;
         else if (black.level < white.level)

@@ -7,24 +7,25 @@ import java.util.Arrays;
 
 public class Poker {
 
-    int[] num = new int [5];
-    char[] col = new char [5];
-    int level = 0;
-    int[] comparePoint = {0, 0, 0, 0, 0};
+    int[] num = new int [5];                //牌面数字
+    char[] col = new char [5];              //牌面花色
+    int level = 0;                          //牌型大小
+    int[] comparePoint = {0, 0, 0, 0, 0};   //同种牌型下比较点
 
+    //提取Black牌面数字,并存储且排序
     public int[] getBlackNumAndProcess(Poker black, String str) {
         char[] in;
         in = str.toCharArray();
         for (int i=0; i<5; i++) {
-            if (in[7 + 3 * i] == 84)//T
+            if (in[7 + 3 * i] == 84)            //T
                 black.num[i] = 10;
-            else if (in[7 + 3 * i] == 74)//J
+            else if (in[7 + 3 * i] == 74)       //J
                 black.num[i] = 11;
-            else if (in[7 + 3 * i] == 81)//Q
+            else if (in[7 + 3 * i] == 81)       //Q
                 black.num[i] = 12;
-            else if (in[7 + 3 * i] == 75)//K
+            else if (in[7 + 3 * i] == 75)       //K
                 black.num[i] = 13;
-            else if (in[7 + 3 * i] == 65)//A
+            else if (in[7 + 3 * i] == 65)       //A
                 black.num[i] = 14;
             else
                 black.num[i] = in[7 + 3 * i] - 48;
@@ -33,19 +34,20 @@ public class Poker {
         return black.num;
     }
 
+    //提取White牌面数字,并存储且排序
     public int[] getWhiteNumAndProcess(Poker white, String str) {
         char[] in;
         in = str.toCharArray();
         for (int i=0; i<5; i++) {
-            if (in[29 + 3 * i] == 84)//T
+            if (in[29 + 3 * i] == 84)           //T
                 white.num[i] = 10;
-            else if (in[29 + 3 * i] == 74)//J
+            else if (in[29 + 3 * i] == 74)      //J
                 white.num[i] = 11;
-            else if (in[29 + 3 * i] == 81)//Q
+            else if (in[29 + 3 * i] == 81)      //Q
                 white.num[i] = 12;
-            else if (in[29 + 3 * i] == 75)//K
+            else if (in[29 + 3 * i] == 75)      //K
                 white.num[i] = 13;
-            else if (in[29 + 3 * i] == 65)//A
+            else if (in[29 + 3 * i] == 65)      //A
                 white.num[i] = 14;
             else
                 white.num[i] = in[29 + 3 * i] - 48;
@@ -54,6 +56,7 @@ public class Poker {
         return white.num;
     }
 
+    //提取Black牌面花色,并存储
     public char[] getBlackColors(Poker black, String str) {
         char[] in;
         in = str.toCharArray();
@@ -63,6 +66,7 @@ public class Poker {
         return black.col;
     }
 
+    //提取White牌面花色,并存储
     public char[] getWhiteColors(Poker white, String str) {
         char[] in;
         in = str.toCharArray();

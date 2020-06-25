@@ -27,8 +27,10 @@ class CompareTest {
     Black: 7H 7C 3D TC 7S White: 8S 5C 8H 4S 8D 输出: White wins 牌型(4-4)
     Black: 2D 2H 4S 6C 6S White: 6S 4C 2H 6S 2D 输出: Tie 牌型(3-3)
      */
+
     @Test
     void testCompareCardSize() {
+
         Poker black = new Poker();
         Poker white = new Poker();
         Judge judge = new Judge();

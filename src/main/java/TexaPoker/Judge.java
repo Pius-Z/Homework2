@@ -196,7 +196,7 @@ public class Judge {
     //高牌,即散牌
     public int isHighCard(Poker poker, String str) {
         if (poker.num[0] != poker.num[1] && poker.num[1] != poker.num[2] &&
-                poker.num[2] != poker.num[3] && poker.num[3] != poker.num[4]){
+                poker.num[2] != poker.num[3] && poker.num[3] != poker.num[4]) {
             poker.level = 1;
             poker.comparePoint = Arrays.copyOf(poker.num, 5);
         }

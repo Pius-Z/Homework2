@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class JudgeTest {
 
-
     static String str = "Black: TC JC QC KC AC White: 2S 3S 6S 4S 5S";
+
     /*
     测试用例
     10-9 Black: TC JC QC AC KC White: 2S 3S 6S 4S 5S
@@ -238,6 +238,7 @@ class JudgeTest {
         assertEquals(expect, actual);
     }
      */
+
     @Test
     void testJudgeBlackType() {
         Poker black = new Poker();
