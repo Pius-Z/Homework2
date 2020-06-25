@@ -9,6 +9,7 @@
 
 ## 思路
 > `提取信息`->`判断牌型`->`比较大小`
+
 ## 代码概述
 ### Poker类
 > 类变量包含一方手牌的牌面数字`num[5]`、牌面花色`col[]`、牌型大小`level`(`level`从1到10依次代表由小到大的10中牌型)及同等牌型时比较点`comparePoint[5]`
@@ -41,5 +42,4 @@
 > `Black: 7C JC TC 9C 8C White: 2S 3S 6S 4S 5S` 输出: Black wins 牌型(9-9)\
 > `Black: 7C 1C 3C TC 8C White: 2S TS 9S 4S 5S` 输出: White wins 牌型(6-6)\
 > `Black: 7H 7C 3D TC 7S White: 8S 5C 8H 4S 8D` 输出: White wins 牌型(4-4)\
-> `Black: 2D 2H 4S 6C 6S White: 6S 4C 2H 6S 2D` 输出: Tie 牌型(3-3)\
-   
+> `Black: 2D 2H 4S 6C 6S White: 6S 4C 2H 6S 2D` 输出: Tie 牌型(3-3)
