@@ -12,7 +12,8 @@ public class Poker {
         Poker black = new Poker();
         Poker white = new Poker();
         Judge judge = new Judge();
-        String str = "Black: 2D 2H 4S 7C 6S White: 2S 4D 6S 8H TS";
+        Compare compare = new Compare();
+        String str = "Black: 2D 2H 4S 6C 6S White: 6S 4C 2H 6S 2D";
         black.getBlackNumAndProcess(black, str);
         white.getWhiteNumAndProcess(white, str);
         black.getBlackColors(black, str);
@@ -21,6 +22,7 @@ public class Poker {
         System.out.println(judge.judgeType(white, str));
         System.out.println(Arrays.toString(black.comparePoint));
         System.out.println(Arrays.toString(white.comparePoint));
+        System.out.println(compare.isCompareCardSize(black, white));
     }
 
     int[] num = new int [5];
